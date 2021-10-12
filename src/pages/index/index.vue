@@ -7,11 +7,13 @@ const catalogue = routes
     name: route.meta.name,
   }))
   .slice(1, routes.length);
-  console.log(catalogue)
+console.log(catalogue);
 </script>
 
 <template>
-  <router-link v-for="route in catalogue" :to="route.path">{{
-    route.name
-  }}</router-link>
+  <ul>
+    <li v-for="route in catalogue">
+      <router-link :to="route.path">{{ route.name }}</router-link>
+    </li>
+  </ul>
 </template>
