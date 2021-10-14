@@ -3,34 +3,53 @@ import {
   createWebHistory
 } from 'vue-router'
 
-import index from '@/pages/index/index.vue'
-// 线性回归
-import linearRegression from '@/pages/linear-regression/index.vue'
-// 归一化
-import heightWeight from '@/pages/height-weight/index.vue'
+import BaseLayout from '@/layouts/BaseLayout.vue'
+import LinearRegression from '@/pages/linear-regression/index.vue'
+import HeightWeight from '@/pages/height-weight/index.vue'
+import LogisticRegression from '@/pages/logistic-regression/index.vue'
+import Xor from '@/pages/xor/index.vue'
+import Iris from '@/pages/iris/index.vue'
+
 
 export const routes = [{
-    path: '/',
-    component: index,
-    meta:{
-      name: '首页'
-    }
-  },
-  {
-    path: '/linear-regression',
-    component: linearRegression,
-    meta:{
-      name: '线性回归'
-    }
-  },
-  {
-    path: '/height-weight',
-    component: heightWeight,
-    meta:{
-      name: '归一化'
-    }
-  },
-]
+  path: '/',
+  component: BaseLayout,
+  children: [{
+      path: '/linear-regression',
+      component: LinearRegression,
+      meta: {
+        name: '线性回归'
+      }
+    }, {
+      path: '/height-weight',
+      component: HeightWeight,
+      meta: {
+        name: '归一化'
+      }
+    },
+    {
+      path: '/logistic-regression',
+      component: LogisticRegression,
+      meta: {
+        name: '逻辑回归'
+      }
+    },
+    {
+      path: '/xor',
+      component: Xor,
+      meta: {
+        name: 'XOR'
+      }
+    },
+    {
+      path: '/iris',
+      component: Iris,
+      meta: {
+        name: 'Iris'
+      }
+    },
+  ]
+}]
 
 const router = createRouter({
   history: createWebHistory(),
